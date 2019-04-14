@@ -30,6 +30,7 @@ Pose ConventionalAXXBSVDSolver::SolveX()
   Eigen::Matrix3d R = Eigen::Map<Eigen::Matrix3d>(x.data());
 
   Eigen::JacobiSVD<Eigen::Matrix3d> svd(R, Eigen::ComputeThinU | Eigen::ComputeThinV);
+  Pose handeyetransformation = Pose::Identity(4,4);
   handeyetransformation.topLeftCorner(3,3) = svd.matrixU() * svd.matrixV().transpose();
   handeyetransformation.topRightCorner(3,1) = x.block<3,1>(9,12);
   return handeyetransformation;
