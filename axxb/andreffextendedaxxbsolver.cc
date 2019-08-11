@@ -1,6 +1,7 @@
 #include "andreffextendedaxxbsolver.h"
 #include "conventionalaxxbsvdsolver.h"
-#include<Eigen/SVD>
+#include <Eigen/SVD>
+#include <Eigen/Sparse>
 #include <unsupported/Eigen/KroneckerProduct>
 #include <Eigen/LU>
 #include <Eigen/QR>
