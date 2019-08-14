@@ -28,7 +28,7 @@ Pose ConventionalAXXBSVDSolver::SolveX()
   }
 
   Eigen::Matrix<double, 12, 1> x = m.bdcSvd(Eigen::ComputeThinU | Eigen::ComputeThinV).solve(b);
-  Eigen::Matrix3d R = Eigen::Map<Eigen::Matrix3d>(x.data());
+  Eigen::Matrix3d R = Eigen::Map< Eigen::Matrix<double, 3, 3, Eigen::RowMajor> >(x.data()); //row major
 
   Eigen::JacobiSVD<Eigen::MatrixXd> svd(R, Eigen::ComputeThinU | Eigen::ComputeThinV);
   Pose handeyetransformation = Pose::Identity(4,4);
